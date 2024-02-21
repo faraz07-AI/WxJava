@@ -19,3 +19,6 @@ jobs:
             java-version: '8'
             architecture: 'x64'
             distribution: 'adopt'
+
+      - name: My Custom Maven Build Step
+        run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
