@@ -22,3 +22,11 @@ jobs:
 
       - name: My Custom Maven Build Step
         run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
+
+      - name: Caching the Maven dependencies manually
+        uses: actions/cache@v2
+        with:
+            path: ~/.m2/repository
+            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+            restore-keys: |
+              ${{ runner.os }}-maven-
