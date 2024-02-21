@@ -30,3 +30,7 @@ jobs:
             key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
             restore-keys: |
               ${{ runner.os }}-maven-
+
+      - name: Sending email notification when build fails
+        if: always() && failure()
+        run: echo "Error occured,Build failed!" | mail -s "Build failed on branch develop" a@binarywang.com
