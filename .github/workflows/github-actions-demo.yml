@@ -32,5 +32,5 @@ jobs:
               ${{ runner.os }}-maven-
 
       - name: Sending email notification when build fails
-        if: always() && failure()
+#        if: always() && failure()
         run: echo "Error occured,Build failed!" | mail -s "Build failed on branch develop" farazgurramkonda@gmail.com
