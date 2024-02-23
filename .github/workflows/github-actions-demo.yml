@@ -21,9 +21,9 @@ jobs:
           distribution: zulu
           java-version: '8'
 
-      - uses: Cleaning up maven packages
+      - uses: Cleaning up maven packages and build maven
       - run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
 
-#     # This item has no matching transformer
-#     - email:
-#       - a@binarywang.com
+      - name: Sending email notification when build fails
+        if: always() && failure()
+        run: echo "Error occured,Build failed!" | mail -s "Build failed on branch develop" a@binarywang.com
