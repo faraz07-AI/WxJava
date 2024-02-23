@@ -9,20 +9,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3.5.0
-
       - name: Set up cache
         uses: actions/cache@v3.3.1
         with:
-          path: "${{ github.workspace }}/.m2/repository"
-          key: "${{ runner.os }}-path"
-
+            path: "${{ github.workspace }}/.m2/repository"
+            key: "${{ runner.os }}-path"
       - uses: actions/setup-java@v3.12.0
         with:
           distribution: zulu
           java-version: '8'
 
-      - uses: Cleaning up maven packages and build maven
-      - run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
+      - name: My Custom Maven Build Step
+        run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
 
       - name: Sending email notification when build fails
         if: always() && failure()
