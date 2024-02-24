@@ -29,3 +29,7 @@ jobs:
 
       - name: My Custom Maven Build Step
         run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
+
+      - name: Sending email notification when build fails
+        if: always() && failure()
+        run: echo "Error occured,Build failed!" | mail -s "Build failed on branch branch-2" a@binarywang.com
