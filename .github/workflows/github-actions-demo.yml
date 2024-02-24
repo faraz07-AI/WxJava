@@ -12,16 +12,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout code
+        uses: actions/checkout@version
+
       - name: Caching the Maven dependencies manually
         uses: actions/cache@v2
         with:
             path: ~/.m2/repository
-            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        - name: build with maven-
+            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }
           uses: actions/setup-java@version
           with:
             java-version: ${{ matrix.java }}
-          uses: actions/checkout@version
+
       run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
 
 macos:
