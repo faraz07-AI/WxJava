@@ -1,10 +1,10 @@
 name: gha2-results
 
 on:
-  pull_request:
+  push:
     branches:
       - branch-2
-  push:
+  pull_request:
     branches:
       - branch-2
 
