@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,8 +19,8 @@ jobs:
       - name: Caching the Maven dependencies manually
         uses: actions/cache@v2
         with:
-            path: ~/.m2/repository
-            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
          uses: actions/setup-java@version
          with:
@@ -29,4 +30,3 @@ jobs:
 
 macos:
   jdk: openjdk8
-
