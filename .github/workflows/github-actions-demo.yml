@@ -29,6 +29,3 @@ jobs:
 
       - name: My Custom Maven Build Step
         run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
-
-macos:
-  jdk: openjdk8
