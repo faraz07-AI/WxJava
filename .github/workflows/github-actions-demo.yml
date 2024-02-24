@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - branch-2
-#  pull_request:
-#    branches:
-#      - branch-2
+  pull_request:
+    branches:
+      - branch-2
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
 
-      run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
+        run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
 
 macos:
   jdk: openjdk8
