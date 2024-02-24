@@ -11,13 +11,13 @@ on:
 jobs:
   build:
       runs-on: ubuntu-latest
+
       steps:
         - name: Caching the Maven dependencies
           uses: actions/cache@v2
           with:
             path: ~/.m2/repository
-            key: ${{ runner.os }}-maven-${{ hashfiles(arg) }}
-        uses: actions/cache@version
+            key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         - name: build with maven-
           uses: actions/setup-java@version
           with:
