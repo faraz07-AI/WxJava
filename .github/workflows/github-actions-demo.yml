@@ -27,7 +27,7 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
-
+      - name: My Custom Maven Build Step
         run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
 
 macos:
